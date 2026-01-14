@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Upload, X } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Upload, X, Loader2, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { UploadedFile } from '../types';
 import { fileToBase64 } from '../services/fileUtils';
@@ -12,7 +12,7 @@ interface UploadZoneProps {
   accept?: string;
   id: string;
   minimal?: boolean;
-  compact?: boolean; // New prop for mobile
+  compact?: boolean;
 }
 
 export const UploadZone: React.FC<UploadZoneProps> = ({
@@ -26,10 +26,13 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   compact = false
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];
+      setIsLoading(true);
       try {
         const base64 = await fileToBase64(selectedFile);
         onFileSelect({
@@ -38,8 +41,13 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
           base64: base64,
           mimeType: selectedFile.type
         });
+        // Show success animation briefly
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 1000);
       } catch (err) {
         console.error("File processing error", err);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -60,11 +68,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       </div>
 
       <div
-        onClick={() => inputRef.current?.click()}
+        onClick={() => !isLoading && inputRef.current?.click()}
         className={`
           relative flex-1 group cursor-pointer 
           border border-dashed rounded-lg transition-all duration-300
           overflow-hidden ${compact ? 'min-h-[80px]' : 'min-h-[120px]'}
+          ${isLoading ? 'border-feudal-gold/70 bg-black/50' : ''}
           ${file
             ? 'border-feudal-gold/50 bg-black/40'
             : 'border-zinc-700 bg-black/20 hover:border-feudal-gold/40 hover:bg-black/30'
@@ -81,11 +90,23 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
         />
 
         <AnimatePresence mode="wait">
-          {file ? (
+          {isLoading ? (
+            /* Loading State */
             <motion.div
-              key="preview"
+              key="loading"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+            >
+              <Loader2 className="w-8 h-8 text-feudal-gold animate-spin" />
+              <span className="text-xs text-feudal-gold/70">Đang xử lý...</span>
+            </motion.div>
+          ) : file ? (
+            <motion.div
+              key="preview"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 flex items-center justify-center p-2"
             >
@@ -94,6 +115,19 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
                 alt="Preview"
                 className="w-full h-full object-contain rounded-lg"
               />
+
+              {/* Success checkmark overlay */}
+              {showSuccess && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="absolute inset-0 flex items-center justify-center bg-black/60"
+                >
+                  <CheckCircle className="w-12 h-12 text-green-500" />
+                </motion.div>
+              )}
+
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                 <button
                   onClick={clearFile}

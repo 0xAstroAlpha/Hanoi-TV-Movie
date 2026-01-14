@@ -211,29 +211,31 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Generate Button */}
-              <button
-                onClick={handleGenerate}
-                disabled={!canGenerate}
-                className={`
-                  w-full py-3 sm:py-4 rounded-lg font-display font-bold text-sm sm:text-base flex items-center justify-center gap-2 sm:gap-3
-                  transition-all duration-300 shadow-lg border
-                  ${canGenerate
-                    ? 'bg-gradient-to-r from-feudal-red to-red-900 border-feudal-gold text-feudal-goldLight hover:brightness-110 active:scale-[0.98]'
-                    : 'bg-zinc-900 border-zinc-800 text-zinc-600 cursor-not-allowed'
-                  }
-                `}
-              >
-                {status === AppStatus.GENERATING ? (
-                  <span className="animate-pulse">Đang tạo ảnh...</span>
-                ) : (
-                  <>
-                    <Zap size={18} className={canGenerate ? "fill-feudal-gold text-feudal-gold" : ""} />
-                    <span>Khai Mở Ấn Chú</span>
-                    <ArrowRight size={18} className="opacity-70" />
-                  </>
-                )}
-              </button>
+              {/* Generate Button - Hidden on mobile (moved to sticky footer) */}
+              <div className="hidden lg:block">
+                <button
+                  onClick={handleGenerate}
+                  disabled={!canGenerate}
+                  className={`
+                    w-full py-3 sm:py-4 rounded-lg font-display font-bold text-sm sm:text-base flex items-center justify-center gap-2 sm:gap-3
+                    transition-all duration-300 shadow-lg border
+                    ${canGenerate
+                      ? 'bg-gradient-to-r from-feudal-red to-red-900 border-feudal-gold text-feudal-goldLight hover:brightness-110 active:scale-[0.98]'
+                      : 'bg-zinc-900 border-zinc-800 text-zinc-600 cursor-not-allowed'
+                    }
+                  `}
+                >
+                  {status === AppStatus.GENERATING ? (
+                    <span className="animate-pulse">Đang tạo ảnh...</span>
+                  ) : (
+                    <>
+                      <Zap size={18} className={canGenerate ? "fill-feudal-gold text-feudal-gold" : ""} />
+                      <span>Khai Mở Ấn Chú</span>
+                      <ArrowRight size={18} className="opacity-70" />
+                    </>
+                  )}
+                </button>
+              </div>
 
               {status === AppStatus.ERROR && (
                 <div className="p-2 bg-red-950/50 border border-red-900/50 rounded-lg flex items-start gap-2">
@@ -264,8 +266,34 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Compact Footer */}
-      <footer className="py-2 border-t border-feudal-gold/10 bg-black/40">
+      {/* Mobile Sticky Generate Button */}
+      <div className="lg:hidden sticky bottom-0 z-40 p-2 bg-feudal-dark/95 backdrop-blur-md border-t border-feudal-gold/20 safe-area-inset-bottom">
+        <button
+          onClick={handleGenerate}
+          disabled={!canGenerate}
+          className={`
+            w-full py-3 rounded-lg font-display font-bold text-sm flex items-center justify-center gap-2
+            transition-all duration-300 shadow-lg border
+            ${canGenerate
+              ? 'bg-gradient-to-r from-feudal-red to-red-900 border-feudal-gold text-feudal-goldLight hover:brightness-110 active:scale-[0.98]'
+              : 'bg-zinc-900 border-zinc-800 text-zinc-600 cursor-not-allowed'
+            }
+          `}
+        >
+          {status === AppStatus.GENERATING ? (
+            <span className="animate-pulse">Đang tạo ảnh...</span>
+          ) : (
+            <>
+              <Zap size={16} className={canGenerate ? "fill-feudal-gold text-feudal-gold" : ""} />
+              <span>Khai Mở Ấn Chú</span>
+              <ArrowRight size={16} className="opacity-70" />
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Compact Footer - Hidden on mobile when sticky button shows */}
+      <footer className="hidden lg:block py-2 border-t border-feudal-gold/10 bg-black/40">
         <div className="text-center">
           <p className="text-feudal-gold/50 text-[10px]">
             Huyền Tình Dạ Trạch World © 2024 | Đài truyền hình Hà Nội
