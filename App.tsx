@@ -145,7 +145,7 @@ const App: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-3 lg:gap-6">
 
             {/* LEFT PANEL: Controls */}
-            <div className="lg:w-[420px] flex flex-col gap-2 sm:gap-3 lg:gap-4">
+            <div className="lg:w-[420px] flex flex-col gap-3 sm:gap-4 lg:gap-4">
 
               {/* Section 1: Upload Photos */}
               <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4">
@@ -192,7 +192,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Section 2: Model Selection - Compact Grid */}
-              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4 mt-2 sm:mt-0">
+              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4">
                 <h3 className="text-xs sm:text-sm lg:text-base font-display font-bold text-feudal-gold mb-1 sm:mb-2 flex items-center gap-1.5">
                   <Users size={14} className="sm:w-4 sm:h-4" />
                   <span>2. Chọn nhân vật hoá thân</span>
