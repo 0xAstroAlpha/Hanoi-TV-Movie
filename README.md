@@ -1,20 +1,70 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Huyền Tình Dạ Trạch World
 
-# Run and deploy your AI Studio app
+> *"Ngược dòng thời gian, tìm lại bản ngã trong thế giới Huyền Tình Dạ Trạch"*
 
-This contains everything you need to run your app locally.
+Ứng dụng tạo ảnh 3D Chibi phong cách cổ trang Việt Nam, cho phép người dùng upload ảnh chân dung và ghép vào các nhân vật trong series phim **Huyền Tình Dạ Trạch**.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1dBravUwi1GdZaTdGZ3YMb4VH1zeu2tUM
+## ✨ Tính năng
 
-## Run Locally
+- **19 mẫu nhân vật** - 9 mẫu đơn + 10 mẫu đôi (cặp)
+- **Upload ảnh kép** - Hỗ trợ ghép 2 người vào các mẫu đôi
+- **Thiết kế mobile-first** - Tối ưu trải nghiệm trên điện thoại
+- **Giữ nguyên identity** - Bảo toàn đặc điểm khuôn mặt và tóc gốc
+- **3D Chibi Style** - Phong cách render Pixar/Disney
 
-**Prerequisites:**  Node.js
+## 🚀 Cài đặt
 
+**Yêu cầu:** Node.js 18+
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+# Cài đặt dependencies
+npm install
+
+# Chạy ứng dụng
+npm run dev
+```
+
+Truy cập: http://localhost:3000
+
+## 📁 Cấu trúc dự án
+
+```
+├── App.tsx                    # Component chính
+├── components/
+│   ├── Header.tsx             # Header với branding
+│   ├── UploadZone.tsx         # Upload ảnh chân dung
+│   ├── ModelStyleSelector.tsx # Chọn nhân vật
+│   └── ResultDisplay.tsx      # Hiển thị kết quả
+├── data/
+│   └── modelStyles.ts         # Dữ liệu 19 nhân vật
+├── services/
+│   ├── nkgService.ts          # Tích hợp NKG API
+│   └── geminiService.ts       # Tích hợp Gemini (backup)
+└── public/models/             # Ảnh nhân vật + thumbnails
+```
+
+## 🎭 Danh sách nhân vật
+
+### Đơn (9 mẫu)
+Chử Đồng Tử Sơ Khai, Già Làng, Hà Bảo Trân, Kiều Tiên, Thổ Phỉ, Tiên Dung, Triệu Lạc Tướng, Triệu Minh Lâm, Xương Cuồng
+
+### Đôi (10 mẫu)
+Chử Cù Vân, Chử Đồng Tử & Tiên Dung, Mẹ Con, Vua & Tiên Dung, Vua & Vợ Vua, Cha Cõng Con, Vua & Chử Đồng Tử, Vua Mời Rượu, Vua Gặp Chử Đồng Tử, Hoàng Hậu & Tiên Dung
+
+## 📱 Screenshots
+
+| Mobile | Desktop |
+|--------|---------|
+| Grid 5 cột, compact | Layout 2 cột với panel kết quả |
+
+## 🔧 Cấu hình
+
+Tạo file `.env.local`:
+
+```env
+NKG_API_URL=http://your-nkg-api-url/generate-multipart
+```
+
+## 📄 License
+
+© 2024 Đài truyền hình Hà Nội
