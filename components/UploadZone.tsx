@@ -143,12 +143,12 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-zinc-600"
+              className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-zinc-600 p-2"
             >
-              <div className="w-10 h-10 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-feudal-gold/50 group-hover:text-feudal-gold transition-colors">
-                <Upload size={18} />
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-feudal-gold/50 group-hover:text-feudal-gold transition-colors">
+                <Upload size={14} className="sm:w-4 sm:h-4" />
               </div>
-              <p className="text-xs font-serif italic group-hover:text-zinc-400">Tải ảnh lên</p>
+              <p className="text-[10px] sm:text-xs font-serif italic group-hover:text-zinc-400">Tải ảnh lên</p>
             </motion.div>
           )}
         </AnimatePresence>
