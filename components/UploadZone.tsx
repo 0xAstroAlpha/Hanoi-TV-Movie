@@ -59,7 +59,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
   };
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full">
       {/* Show header - compact for minimal mode */}
       <div className={compact ? "mb-1" : minimal ? "mb-1" : "mb-3"}>
         <h3 className={`font-display font-bold text-feudal-gold tracking-wide ${compact ? 'text-[10px]' : minimal ? 'text-xs' : 'text-sm'}`}>{label}</h3>
@@ -70,9 +70,9 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
       <div
         onClick={() => !isLoading && inputRef.current?.click()}
         className={`
-          relative flex-1 group cursor-pointer 
+          relative group cursor-pointer 
           border border-dashed rounded-lg transition-all duration-300
-          overflow-hidden min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]
+          overflow-hidden h-[60px] sm:h-[70px] lg:h-[80px]
           ${isLoading ? 'border-feudal-gold/70 bg-black/50' : ''}
           ${file
             ? 'border-feudal-gold/50 bg-black/40'
