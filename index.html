@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huyền Tình Dạ Trạch World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Philosopher:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              display: ['Philosopher', 'sans-serif'],
+            },
+            colors: {
+              feudal: {
+                red: '#7F1D1D',     // Deep Lacquer Red
+                gold: '#D4AF37',    // Imperial Gold
+                goldLight: '#FDE68A',
+                dark: '#0F0505',    // Very dark warm black
+                navy: '#172554',    // Deep Indigo
+                paper: '#F5F5DC',   // Parchment text color
+              }
+            },
+            backgroundImage: {
+              'oriental-gradient': 'radial-gradient(circle at center, #2a0a0a 0%, #000000 100%)',
+              'gold-border': 'linear-gradient(to right, transparent, #D4AF37, transparent)',
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050101;
+        color: #e4e4e7;
+        font-family: 'Inter', sans-serif;
+      }
+      .font-feudal {
+        font-family: 'Philosopher', sans-serif;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0F0505; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #7F1D1D; 
+        border-radius: 4px;
+        border: 1px solid #331010;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #991b1b; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.26.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
