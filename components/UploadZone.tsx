@@ -72,7 +72,7 @@ export const UploadZone: React.FC<UploadZoneProps> = ({
         className={`
           relative flex-1 group cursor-pointer 
           border border-dashed rounded-lg transition-all duration-300
-          overflow-hidden ${compact ? 'min-h-[80px] sm:min-h-[100px] lg:min-h-[120px]' : 'min-h-[120px]'}
+          overflow-hidden min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]
           ${isLoading ? 'border-feudal-gold/70 bg-black/50' : ''}
           ${file
             ? 'border-feudal-gold/50 bg-black/40'

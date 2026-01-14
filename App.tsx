@@ -148,7 +148,7 @@ const App: React.FC = () => {
             <div className="lg:w-[420px] flex flex-col gap-3 sm:gap-4 lg:gap-4">
 
               {/* Section 1: Upload Photos */}
-              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4">
+              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4 pb-4">
                 <h3 className="text-xs sm:text-sm lg:text-base font-display font-bold text-feudal-gold mb-2 sm:mb-3 flex items-center gap-1.5">
                   <Image size={14} className="sm:w-4 sm:h-4" />
                   <span>{isCoupleModel ? '1. Tải ảnh (2 người)' : '1. Tải ảnh chân dung'}</span>
