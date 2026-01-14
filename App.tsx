@@ -192,7 +192,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Section 2: Model Selection - Compact Grid */}
-              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4 flex-1 min-h-0">
+              <div className="bg-feudal-dark/60 rounded-lg border border-feudal-gold/30 p-3 sm:p-4 mt-2 sm:mt-0">
                 <h3 className="text-xs sm:text-sm lg:text-base font-display font-bold text-feudal-gold mb-1 sm:mb-2 flex items-center gap-1.5">
                   <Users size={14} className="sm:w-4 sm:h-4" />
                   <span>2. Chọn nhân vật hoá thân</span>
