@@ -5,7 +5,6 @@ import { ResultDisplay } from './components/ResultDisplay';
 import { CharacterSelector } from './components/CharacterSelector';
 import { ModelStyleSelector } from './components/ModelStyleSelector';
 import { UploadedFile, AppStatus, CharacterProfile, AIProvider, ModelStyle } from './types';
-import { generateComposite } from './services/geminiService';
 import { generateCompositeNKG } from './services/nkgService';
 import { CHARACTERS, QUOTES } from './data/characters';
 import { MODEL_STYLES } from './data/modelStyles';

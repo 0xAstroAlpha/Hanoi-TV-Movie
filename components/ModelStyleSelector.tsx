@@ -106,8 +106,8 @@ export const ModelStyleSelector: React.FC<ModelStyleSelectorProps> = ({
                     ref={scrollRef}
                     className="absolute inset-0 overflow-y-auto pr-0.5 custom-scrollbar"
                 >
-                    {/* Grid: 3 cols mobile, 4 cols tablet+ for better readability */}
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
+                    {/* Grid: 4 cols mobile/tablet, allows seeing more options at once */}
+                    <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-4 gap-1 sm:gap-1.5">
                         {currentModels.map((model) => (
                             <button
                                 key={model.id}
